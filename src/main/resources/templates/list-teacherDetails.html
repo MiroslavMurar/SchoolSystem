@@ -1,0 +1,41 @@
+<!DOCTYPE HTML> 
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>TeacherDetails </title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	
+</head>
+
+<body>
+	<div class="container">
+		<h3>TeacherDetails List</h3>
+		<hr>
+		
+		<a th:href="@{/teacherDetails/showFormForAdd}" class="btn btn-dark">Add TeacherDetails</a>
+		<br><br>
+		
+		<table class="table table-bordered table-striped"> 
+			<thead class="thead-dark">
+				<tr>
+					<th>Profile </th>
+					<th>Hobby </th>
+<!-- 					<th>Email</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tempTeacherDetails : ${teacherDetails}">
+				
+					<td th:text="${tempTeacherDetails.profile}"/>
+					<td th:text="${tempTeacherDetails.hobby}"/>
+<!-- 					<td th:text="${tempTeacherDetails.email}"/> -->
+				
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/}">Back to WelcomePage</a>
+	</div>
+</body>
+</html>
