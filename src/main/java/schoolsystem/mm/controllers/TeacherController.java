@@ -48,11 +48,19 @@ public class TeacherController {
 		return "teacher-form"; 
 	}
 	
+//	@PostMapping("/save")
+//	public String save(@ModelAttribute("teacher") Teacher teacher) {
+//
+//		TeacherDetail teacherDetail = new TeacherDetail();
+//		teacher.setTeacherDetailId(teacherDetail); 
+//		
+//		teacherService.saveTeacher(teacher);   
+//		
+//		return "redirect:/teachers/list"; 
+//	}
+	
 	@PostMapping("/save")
-	public String save(@ModelAttribute("teacher") Teacher teacher, Model model) {
-
-		TeacherDetail teacherDetail = new TeacherDetail();
-		teacher.setTeacherDetailId(teacherDetail); 
+	public String save(@ModelAttribute("teacher") Teacher teacher) {
 		
 		teacherService.saveTeacher(teacher);   
 		
@@ -62,10 +70,27 @@ public class TeacherController {
 	@PostMapping("/update")
 	public String update(@ModelAttribute("teacher") Teacher teacher) {
 		
+		System.out.println("==============>>>>>>>>"+ teacher.getTeacherDetailId().getId());
+		TeacherDetail teacherDetail = 
+				teacherDetailService.getTeacherDetailFromTeacher(teacher.getTeacherDetailId().getId()); 
+//		System.out.println("TeacherDetail: " + teacherDetail.getProfile());
+		
+		teacher.setTeacherDetailId(teacherDetail); 
+		
 		teacherService.saveTeacher(teacher);
 		
 		return "redirect:/teachers/list"; 
 	}
+	
+//	@GetMapping("/showUpdateForm")
+//	public String showUpdateForm(@RequestParam("teacherId") int teacherId, Model model) {
+//		
+//		Teacher teacher = teacherService.getTeacher(teacherId); 
+//		
+//		model.addAttribute("teacher", teacher); 
+//		
+//		return "teacher-update-form"; 
+//	}
 	
 	@GetMapping("/showUpdateForm")
 	public String showUpdateForm(@RequestParam("teacherId") int teacherId, Model model) {

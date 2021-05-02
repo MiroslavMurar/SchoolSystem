@@ -39,10 +39,29 @@ private List<TeacherDetail> theTeachers;
 		return "list-teacherDetails";
 	}
 	
+//	@GetMapping("/showFormForAdd")
+//	public String showFormForAdd(@RequestParam("teacherId") int teacherId, Model model) {
+//		
+//		TeacherDetail teacherDetail = teacherDetailService.getTeacherDetailFromTeacher(teacherId); 
+//		
+//		model.addAttribute("teacherDetail", teacherDetail); 
+//		
+//		return "teacherDetail-form"; 
+//	}
+	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(@RequestParam("teacherId") int teacherId, Model model) {
 		
-		TeacherDetail teacherDetail = teacherDetailService.getTeacherDetailFromTeacher(teacherId); 
+		Teacher teacher = teacherService.getTeacher(teacherId); 
+		TeacherDetail teacherDetail = null; 
+		if (teacher.getTeacherDetailId() == null) {
+			teacherDetail = new TeacherDetail(); 
+			teacher.setTeacherDetailId(teacherDetail); 
+		} else {
+			teacherDetail = teacher.getTeacherDetailId(); 
+		}
+		
+		teacherService.saveTeacher(teacher); 
 		
 		model.addAttribute("teacherDetail", teacherDetail); 
 		
