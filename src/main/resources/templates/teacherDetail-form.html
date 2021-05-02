@@ -18,19 +18,16 @@
 		
 		<form action="#" th:action="@{/teacherDetails/save}"
 						th:object="${teacherDetail}" method="POST">
-					
-						
+								
 			<input type="hidden" th:field="*{id}" /> 
-			
 						
 			<input type="text" th:field="*{profile}"
-					class="form-control mb-4 col-4" placeholder="Profile">
-					
-			<input type="text" th:field="*{hobby}"
-			class="form-control mb-4 col-4" placeholder="Hobby">	
+					class="form-control mb-4 col-4" placeholder="Profile" />
+			<td th:if="${#fields.hasErrors('profile')}" th:errors="*{profile}">Name Error</td>
 			
-<!-- 			<input type="text" th:field="*{email}" -->
-<!-- 			class="form-control mb-4 col-4" placeholder="Email"> -->
+				
+			<input type="text" th:field="*{hobby}"
+			class="form-control mb-4 col-4" placeholder="Hobby"/>
 			
 			<button type="submit" class="btn btn-info col-2">Save</button>		
 		</form>

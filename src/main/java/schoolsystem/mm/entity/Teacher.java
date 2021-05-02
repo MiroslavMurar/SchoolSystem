@@ -28,6 +28,10 @@ public class Teacher {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="phone")
+	private String phoneNumber; 
+	
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="teacher_detail")
 	private TeacherDetail teacherDetailId; 
@@ -43,6 +47,13 @@ public class Teacher {
 		this.email = email;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	public TeacherDetail getTeacherDetailId() {
 		return teacherDetailId;

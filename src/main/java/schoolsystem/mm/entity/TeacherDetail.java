@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="teacher_detail")
@@ -16,16 +20,19 @@ public class TeacherDetail {
 	@Column(name="id")
 	private int id; 
 	
+	@NotNull(message="is required")
+	@Min(value=5, message="must be greater than 0")
+	@Max(value=10, message="must be lower than 10")
 	@Column(name="profile")
 	private String profile; 
 	
+	@NotNull(message="is required")
+	@Min(value=5, message="must be greater than 0")
+	@Max(value=10, message="must be lower than 10")
 	@Column(name="hobby")
 	private String hobby;
 
-	public TeacherDetail() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public TeacherDetail() {} 
 
 	public TeacherDetail(String profile, String hobby) {
 		super();
