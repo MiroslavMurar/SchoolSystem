@@ -16,4 +16,5 @@ public interface TeacherDetailDAO {
 	
 	public void deleteTeacherDetail(int id);
 
+	public TeacherDetail getTeacherDetailFromTeacher(int teacherId); 
 }

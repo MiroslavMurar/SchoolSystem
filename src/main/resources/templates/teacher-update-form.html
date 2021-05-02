@@ -11,16 +11,18 @@
 
 <body>
 	<div class="container">	
-		<h3>Form for new Teacher </h3>
+		<h3>Form for updating Teacher </h3>
 		<hr>
 		
-		<p class="h4 mb-4">Save Teacher</p>
+		<p class="h4 mb-4">Update Teacher</p>
 		
-		<form action="#" th:action="@{/teachers/save}"
+		<form action="#" th:action="@{/teachers/update}"
 						th:object="${teacher}" method="POST">
 	
-			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="${teacher.id}" />
 			
+			<input type="hidden" th:field="${teacher.teacherDetailId.id}"/>  		
+						
 			<input type="text" th:field="*{firstName}"
 					class="form-control mb-4 col-4" placeholder="First name">
 					
@@ -30,7 +32,7 @@
 			<input type="text" th:field="*{email}"
 			class="form-control mb-4 col-4" placeholder="Email">
 			
-			<button type="submit" class="btn btn-info col-2">Save</button>		
+			<button type="submit" class="btn btn-info col-2">Update</button>		
 		</form>
 	
 		<hr>

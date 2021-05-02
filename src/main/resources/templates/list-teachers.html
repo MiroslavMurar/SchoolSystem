@@ -23,6 +23,8 @@
 					<th>First Name </th>
 					<th>Last Name </th>
 					<th>Email</th>
+					<th>Changes</th>
+					<th>Profile</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,7 +33,17 @@
 					<td th:text="${tempTeacher.firstName}"/>
 					<td th:text="${tempTeacher.lastName}"/>
 					<td th:text="${tempTeacher.email}"/>
-				
+					<td>
+						<a th:href="@{/teachers/showUpdateForm(teacherId=${tempTeacher.id})}"
+						class="btn btn-info btn-sm">
+						Update
+						
+						<a th:href="@{/teachers/delete(teacherId=${tempTeacher.id})}" 
+						class="btn btn-danger btn-sm">Delete</a>
+					</a>
+					</td>
+					<td> <a th:href="@{/teacherDetails/showFormForAdd(teacherId=${tempTeacher.id})}"
+						 class="btn btn-dark">Add Profile</a> </td>
 				</tr>
 			</tbody>
 		</table>

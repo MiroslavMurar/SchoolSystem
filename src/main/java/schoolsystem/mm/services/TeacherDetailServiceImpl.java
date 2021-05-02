@@ -47,9 +47,17 @@ public class TeacherDetailServiceImpl implements TeacherDetailService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteTeacherDetail(int id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	@Transactional
+	public TeacherDetail getTeacherDetailFromTeacher(int id) {
+		
+		return teacherDetailDAO.getTeacherDetailFromTeacher(id);
 	}
 
 }

@@ -64,7 +64,11 @@ public class TeacherDaoImpl implements TeacherDAO {
 	@Override
 	public void deleteTeacher(int id) {
 		
+		Session session = sessionFactory.getCurrentSession(); 
 		
+		Teacher teacher = session.get(Teacher.class, id); 
+		
+		session.delete(teacher);
 	}
 
 }

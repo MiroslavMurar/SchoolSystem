@@ -15,4 +15,6 @@ public interface TeacherDetailService {
 	public void updateTeacherDetail(TeacherDetail teacherDetail); 
 	
 	public void deleteTeacherDetail(int id);
+	
+	public TeacherDetail getTeacherDetailFromTeacher(int id); 
 }

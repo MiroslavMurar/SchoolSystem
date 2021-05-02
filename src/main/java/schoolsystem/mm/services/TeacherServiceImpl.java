@@ -54,9 +54,10 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteTeacher(int id) {
-		// TODO Auto-generated method stub
-
+		
+		teacherDAO.deleteTeacher(id);
 	}
 
 }

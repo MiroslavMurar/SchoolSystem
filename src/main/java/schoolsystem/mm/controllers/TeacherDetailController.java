@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import schoolsystem.mm.entity.Teacher;
 import schoolsystem.mm.entity.TeacherDetail;
@@ -39,39 +40,20 @@ private List<TeacherDetail> theTeachers;
 	}
 	
 	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(@ModelAttribute("teacher") Teacher teacher, Model model) {
+	public String showFormForAdd(@RequestParam("teacherId") int teacherId, Model model) {
 		
-		TeacherDetail teacherDetail = new TeacherDetail(); 
-//		teacher.setTeacherDetailId(teacherDetail); 	
-//		teacherService.persistTeacher(teacher);
-		
-		if (teacher != null) {
-			System.out.println("Teacher Exist");
-		}
+		TeacherDetail teacherDetail = teacherDetailService.getTeacherDetailFromTeacher(teacherId); 
 		
 		model.addAttribute("teacherDetail", teacherDetail); 
-		model.addAttribute("teacher", teacher); 
 		
 		return "teacherDetail-form"; 
 	}
 	
 	@PostMapping("/save")
-	public String save(@ModelAttribute("teacherDetail") TeacherDetail teacherDetail,
-						@ModelAttribute("teacher") Teacher teacher) {
-		
-		if (teacher != null) {
-			teacher.setTeacherDetailId(teacherDetail);
-			teacherService.saveTeacher(teacher); 
-		}
-		
-//		teacherDetailService.saveTeacherDetail(teacherDetail); 
-		
-		
-//		Teacher teacher1 = teacherService.getTeacher(1); 
-//		
-//		teacher1.setTeacherDetailId(teacherDetail); 
-//		teacherService.saveTeacher(teacher1); 
-		
+	public String save(@ModelAttribute("teacherDetail") TeacherDetail teacherDetail) {
+	
+		teacherDetailService.saveTeacherDetail(teacherDetail); 
+
 		return "redirect:/teacherDetails/list"; 
 	}
 }
