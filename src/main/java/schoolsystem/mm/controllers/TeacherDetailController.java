@@ -19,7 +19,7 @@ import schoolsystem.mm.services.TeacherService;
 @Controller	
 @RequestMapping("/teacherDetails")
 public class TeacherDetailController {
-	
+
 private List<TeacherDetail> theTeachers; 
 	
 	@Autowired
@@ -36,18 +36,8 @@ private List<TeacherDetail> theTeachers;
 		
 		theModel.addAttribute("teacherDetails", teacherDetails); 
 		
-		return "list-teacherDetails";
+		return "teacherDetail/list-teacherDetails";
 	}
-	
-//	@GetMapping("/showFormForAdd")
-//	public String showFormForAdd(@RequestParam("teacherId") int teacherId, Model model) {
-//		
-//		TeacherDetail teacherDetail = teacherDetailService.getTeacherDetailFromTeacher(teacherId); 
-//		
-//		model.addAttribute("teacherDetail", teacherDetail); 
-//		
-//		return "teacherDetail-form"; 
-//	}
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(@RequestParam("teacherId") int teacherId, Model model) {
@@ -65,7 +55,7 @@ private List<TeacherDetail> theTeachers;
 		
 		model.addAttribute("teacherDetail", teacherDetail); 
 		
-		return "teacherDetail-form"; 
+		return "teacherDetail/teacherDetail-form"; 
 	}
 	
 	@PostMapping("/save")

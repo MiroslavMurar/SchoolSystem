@@ -35,7 +35,7 @@ public class TeacherController {
 		
 		theModel.addAttribute("teachers", teachers); 
 		
-		return "list-teachers";
+		return "teacher/list-teachers";
 	}
 	
 	@GetMapping("/showFormForAdd")
@@ -45,19 +45,8 @@ public class TeacherController {
 		
 		model.addAttribute("teacher", teacher); 
 		
-		return "teacher-form"; 
+		return "teacher/teacher-form"; 
 	}
-	
-//	@PostMapping("/save")
-//	public String save(@ModelAttribute("teacher") Teacher teacher) {
-//
-//		TeacherDetail teacherDetail = new TeacherDetail();
-//		teacher.setTeacherDetailId(teacherDetail); 
-//		
-//		teacherService.saveTeacher(teacher);   
-//		
-//		return "redirect:/teachers/list"; 
-//	}
 	
 	@PostMapping("/save")
 	public String save(@ModelAttribute("teacher") Teacher teacher) {
@@ -73,7 +62,6 @@ public class TeacherController {
 		System.out.println("==============>>>>>>>>"+ teacher.getTeacherDetailId().getId());
 		TeacherDetail teacherDetail = 
 				teacherDetailService.getTeacherDetailFromTeacher(teacher.getTeacherDetailId().getId()); 
-//		System.out.println("TeacherDetail: " + teacherDetail.getProfile());
 		
 		teacher.setTeacherDetailId(teacherDetail); 
 		
@@ -82,16 +70,6 @@ public class TeacherController {
 		return "redirect:/teachers/list"; 
 	}
 	
-//	@GetMapping("/showUpdateForm")
-//	public String showUpdateForm(@RequestParam("teacherId") int teacherId, Model model) {
-//		
-//		Teacher teacher = teacherService.getTeacher(teacherId); 
-//		
-//		model.addAttribute("teacher", teacher); 
-//		
-//		return "teacher-update-form"; 
-//	}
-	
 	@GetMapping("/showUpdateForm")
 	public String showUpdateForm(@RequestParam("teacherId") int teacherId, Model model) {
 		
@@ -99,7 +77,7 @@ public class TeacherController {
 		
 		model.addAttribute("teacher", teacher); 
 		
-		return "teacher-update-form"; 
+		return "teacher/teacher-update-form"; 
 	}
 	
 	@GetMapping("/delete")

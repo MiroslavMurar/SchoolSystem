@@ -1,12 +1,16 @@
 package schoolsystem.mm.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,12 +35,14 @@ public class Teacher {
 	@Column(name="phone")
 	private String phoneNumber; 
 	
-	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="teacher_detail")
 	private TeacherDetail teacherDetailId; 
 	
+	@OneToMany(mappedBy="teacher", fetch = FetchType.EAGER)
+	List<Course> courses; 
 	
+
 	public Teacher() {}
 
 	public Teacher(int id, String firstName, String lastName, String email) {
@@ -45,6 +51,18 @@ public class Teacher {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+	}
+	
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
+	public void addCourses(Course course) {
+		this.courses.add(course); 
 	}
 
 	public String getPhoneNumber() {

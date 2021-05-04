@@ -20,15 +20,15 @@ public class TeacherDetail {
 	@Column(name="id")
 	private int id; 
 	
-	@NotNull(message="is required")
-	@Min(value=5, message="must be greater than 0")
-	@Max(value=10, message="must be lower than 10")
+//	@NotNull(message="is required")
+//	@Min(value=0, message="must be greater than 0")
+//	@Max(value=10, message="must be lower than 10")
 	@Column(name="profile")
 	private String profile; 
 	
-	@NotNull(message="is required")
-	@Min(value=5, message="must be greater than 0")
-	@Max(value=10, message="must be lower than 10")
+//	@NotNull(message="is required")
+//	@Min(value=5, message="must be greater than 0")
+//	@Max(value=10, message="must be lower than 10")
 	@Column(name="hobby")
 	private String hobby;
 
