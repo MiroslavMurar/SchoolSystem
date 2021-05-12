@@ -9,8 +9,6 @@ public interface StudentService {
 
 	public List<Student> getStudents();
 	
-//	public List<Course> getCourses(int studentId); 
-	
 	public Student getStudent(int id); 
 	
 	public void saveStudent(Student student); 

@@ -58,6 +58,14 @@ public class Student {
 		if (courses == null) {
 			courses = new ArrayList<>(); 
 		}
+		
+		for (int i = 0; i < this.courses.size(); i++) {
+			Course iteratedCourse = this.courses.get(i);
+			if (iteratedCourse.getTitle().equals(course.getTitle())) {
+				return; 
+			}
+		}	
+		
 		courses.add(course); 
 	}
 	
@@ -70,7 +78,8 @@ public class Student {
 				break; 
 			}
 		}	
-		
+
+//		Obviously instance from DB has different ADDRESS than instance inside ArrayList 		
 //		int index = this.courses.indexOf(course); 
 //		System.out.println("index is: " + index);
 //		

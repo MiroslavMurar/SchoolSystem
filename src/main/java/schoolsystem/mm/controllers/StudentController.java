@@ -141,6 +141,4 @@ public class StudentController {
 		return "redirect:students/list/" + studentId; 
 		
 	}
-	
-	
 }

@@ -53,17 +53,4 @@ public class StudentDAOImpl implements StudentDAO {
 		session.delete(student);
 		
 	}
-
-//	@Override
-//	public List<Course> getCourses(int studentId) {
-//		
-//		Session session = sessionFactory.getCurrentSession(); 
-//		
-//		Student student = session.get(Student.class, studentId); 
-//		
-//		List<Course> courses = student.getCourses(); 
-//		
-//		return courses; 
-//	
-//	}
 }
